@@ -4,28 +4,42 @@ import { Month } from "./month.js";
 export class Year {
     constructor(number, day){
         this.number = number;
-        this.startDay = day;
+        this.startDay = new Day(day.name, day.number)
+        // this.startDay.numbe = day.number;
         this.isLeap = this.checkLeap(number);
         this.months = new Array(12);
+        this.build();
     }
 
     checkLeap(number){
-        let leapYears = [0,4,8,12,16,20,24,29,33,37,41,45,49,53,57,62,66,70,74,78,82,86,90,95,99,103,107,111,115,119,124];
+        let leapYears = [0 ,4 ,8 ,12 ,16 ,20 ,24 ,29 ,33 ,37 ,41 ,45 ,49 ,53 ,57 ,62 ,66 ,70 ,74 ,78 ,82 ,86 ,90 ,95 ,99 ,103 ,107 ,111 ,115 ,119 ,124];
         for (const year of leapYears) {
-            if (number % 128 == year) return true;
+            if ((number % 128) == year) return true;
         }
 
         return false;
     }
 
     build(){
-        for (let index = 0; index < this.months.length; index++) {
+        for (let index = 1; index < 2; index++) {
             let thisMonthName = this.getMonthName(index);
-            let thisMonthNumber = this.getMonthNumber(index);
-            this.months.push(new Month(this.startDay, thisMonthName, thisMonthNumber));
+            let thisMonthLength = this.getMonthLength(index);
+
+            this.months[index] = new Month(this.startDay, thisMonthName, thisMonthLength);
+
             let nexMonthStart = this.startDay.name;
-            this.startDay = new Day((nexMonthStart + thisMonthNumber) % 7, 1);
+            this.startDay = new Day(this.getNextDayName(nexMonthStart, thisMonthLength), 1);
         }
+    }
+
+    getNextDayName(name, length){
+        // return length2;
+        let j;
+        if (length == 28) j = name;
+        else if (length == 29) j = name + 1;
+        else if (length == 30) j = name + 2;
+        else if (length == 31) j = name + 3;
+        return j % 7;
     }
 
     getMonthName(number){
@@ -69,7 +83,7 @@ export class Year {
         }
     }
 
-    getMonthNumber(number){
+    getMonthLength(number){
         switch (number) {
             case 1:
                 return 31;

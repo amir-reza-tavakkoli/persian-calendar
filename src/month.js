@@ -6,11 +6,12 @@ export class Month {
         this.length = length;
         this.name = name;
         this.days = new Array(this.length);
+        this.build();
     }
 
     build(){
         for (let index = 0; index < this.length; index++) {
-            days.push(new Day((this.start.name + i) % 7, this.start.number + i));
+            this.days[index] = new Day((this.start.name + index) % 7, this.start.number + index);
         }
     }
 
