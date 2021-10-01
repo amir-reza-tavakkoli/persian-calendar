@@ -21,7 +21,7 @@ export class Year {
     }
 
     build(){
-        for (let index = 1; index < 2; index++) {
+        for (let index = 1; index < 13; index++) {
             let thisMonthName = this.getMonthName(index);
             let thisMonthLength = this.getMonthLength(index);
 

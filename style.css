@@ -1,0 +1,40 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    background-color: olive;
+    grid-auto-rows: 200px;
+}
+
+.card{
+    background-color: orange;
+    border: solid;
+    width: auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+    /* grid-auto-rows: 30px; */
+    /* grid-auto-rows:; */
+    /* justify-content: ;
+     */
+     align-items: center;
+     /* justify-items: ; */
+     gap: 3px;
+}
+
+.card p {
+    height: 2.5rem;
+    background-color: white;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}

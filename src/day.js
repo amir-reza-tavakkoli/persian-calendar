@@ -10,3 +10,9 @@ export class Day {
     }
 
 }
+/*
+1 ~ 1shanbe
+0 ~ shanbe
+6 ~ jomeh
+5 ~ 5shanbe
+ */
