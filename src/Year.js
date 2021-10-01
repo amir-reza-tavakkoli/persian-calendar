@@ -124,4 +124,7 @@ export class Year {
                 break;
         }
     }
+    getLastDay(){
+        return this.months[-1][-1];
+    }
 }
